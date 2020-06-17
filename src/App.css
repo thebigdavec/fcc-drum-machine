@@ -13,38 +13,40 @@
     color: white;
 }
 
+.darkbox {
+    padding: 1rem;
+    background: black;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
 .controls {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    list-style: none;
-    padding: 1em;
-    border-radius: 1em;
-    gap: 1em;
-    margin: 0;
-    background: black;
-    overflow: hidden;
+    gap: 1rem;
 }
 
-.control {
+.drum-pad {
+    position: relative;
+    border: none;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     place-items: center;
+    color: red;
     background: rgb(23, 23, 23);
-    padding: .1em;
-    border-radius: .3em;
+    padding: 1em;
+    border-radius: 1em;
     transition: background 150ms ease-out;
 }
 
-.control:hover {
+.drum-pad:hover {
     background: rgb(23, 60, 23);
 }
 
-.control-key {
-    color: red;
-    font-size: large;
-    padding: .3em;
+.drum-pad:active {
+    background: rgb(37, 107, 37);
 }
 
 .control-name {
