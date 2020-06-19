@@ -44,6 +44,7 @@ class App extends React.Component {
 	}
 
 	handleClick(e) {
+    e.preventDefault();
 		const drumLetter = e.target.innerText;
 		this.triggerSound(drumLetter);
 	}
@@ -61,10 +62,8 @@ class App extends React.Component {
 		const drumLetter = e.key.toUpperCase();
 
 		if (this.state.keyList.includes(drumLetter)) {
-			this.triggerSound(drumLetter);
-		}
-		console.log('no such drum');
-		return 'no such drum';
+      this.triggerSound(drumLetter);
+    }
 	}
 
 	triggerSound(drumLetter) {
