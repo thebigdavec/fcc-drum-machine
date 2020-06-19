@@ -1,12 +1,10 @@
 import React from 'react';
 
-const Pad = (props) => {
+const VolumeControl = (props) => {
 	return (
 		<div id={props.drumName} onClick={props.clickHandler} className="drum-pad">
-			<audio className="clip" id={props.drumKey} src={props.url} />
-			{props.drumKey}
 		</div>
 	);
 };
 
-export default Pad;
+export default VolumeControl;

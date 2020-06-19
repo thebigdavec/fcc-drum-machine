@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import AppTitle from './AppTitle.js';
 import Pads from './Pads.js';
+import VolumeControl from './VolumeControl';
 import Display from './Display.js';
 
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
 			appTitle: 'Drum Machine',
 			keyList: 'QWEASDZXC',
 			currentDrum: 'the drum',
+			volumeLevel: 1,
 			banks: [
 				[
 					{ name: 'clap', url: './samples/Clap03 Drums1DOTcom.wav' },
@@ -44,7 +46,7 @@ class App extends React.Component {
 	}
 
 	handleClick(e) {
-    e.preventDefault();
+		e.preventDefault();
 		const drumLetter = e.target.innerText;
 		this.triggerSound(drumLetter);
 	}
@@ -61,44 +63,45 @@ class App extends React.Component {
 		const drumLetter = e.key.toUpperCase();
 
 		if (this.state.keyList.includes(drumLetter)) {
-      this.triggerSound(drumLetter);
-    }
+			this.triggerSound(drumLetter);
+		}
 	}
 
 	triggerSound(drumLetter) {
 		const drumIndex = this.state.keyList.indexOf(drumLetter);
 		const drumName = this.state.banks[this.state.bank][drumIndex].name;
 		const sound = document.getElementById(drumLetter);
-    const pad = document.getElementById(drumName);
+		const pad = document.getElementById(drumName);
 
 		sound.currentTime = 0;
 		sound.play();
 		this.setState({
 			currentDrum: drumName
-    });
-    // document.getElementById(drumName).classList.toggle('drum-pad-active');
-    this.activatePad(pad);
-    setTimeout(() => this.activatePad(pad), 100);
-    // document.getElementById(drumName).classList.toggle('drum-pad-active');
+		});
+		// document.getElementById(drumName).classList.toggle('drum-pad-active');
+		this.activatePad(pad);
+		setTimeout(() => this.activatePad(pad), 100);
+		// document.getElementById(drumName).classList.toggle('drum-pad-active');
 	}
 
-  activatePad(pad) {
-    pad.classList.toggle('drum-pad-active');
-  }
+	activatePad(pad) {
+		pad.classList.toggle('drum-pad-active');
+	}
 
 	render() {
 		return (
 			<div className="App">
 				<header id="drum-machine" className="App-header">
 					<AppTitle apptitle={this.state.appTitle} />
-          <div className='control-box'>
-					<Pads
-						clickHandler={this.handleClick}
-						controls={this.state.keyList}
-						drums={[ this.state.banks[this.state.bank] ]}
-					/>
-					<Display currentDrum={this.state.currentDrum} />
-          </div>
+					<div className="control-box">
+						<Pads
+							clickHandler={this.handleClick}
+							controls={this.state.keyList}
+							drums={[ this.state.banks[this.state.bank] ]}
+						/>
+						<Display currentDrum={this.state.currentDrum} />
+						<VolumeControl />
+					</div>
 				</header>
 			</div>
 		);
