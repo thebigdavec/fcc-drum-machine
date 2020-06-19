@@ -92,12 +92,14 @@ class App extends React.Component {
 			<div className="App">
 				<header id="drum-machine" className="App-header">
 					<AppTitle apptitle={this.state.appTitle} />
-					<Display currentDrum={this.state.currentDrum} />
+          <div className='control-box'>
 					<Pads
 						clickHandler={this.handleClick}
 						controls={this.state.keyList}
 						drums={[ this.state.banks[this.state.bank] ]}
 					/>
+					<Display currentDrum={this.state.currentDrum} />
+          </div>
 				</header>
 			</div>
 		);
