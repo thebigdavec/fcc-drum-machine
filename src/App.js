@@ -83,7 +83,6 @@ class App extends React.Component {
 	}
 
   activatePad(pad) {
-    console.log(pad);
     pad.classList.toggle('drum-pad-active');
   }
 
