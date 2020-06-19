@@ -58,7 +58,6 @@ class App extends React.Component {
 	}
 
 	handleKeyPress(e) {
-		e.preventDefault();
 		const drumLetter = e.key.toUpperCase();
 
 		if (this.state.keyList.includes(drumLetter)) {
