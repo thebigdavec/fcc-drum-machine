@@ -2,9 +2,10 @@ import React from 'react';
 
 const Pad = (props) => {
         return (
-        <button id={props.drumName} onClick={props.clickHandler} className="drum-pad">
+        <div id={props.drumName} onClick={props.clickHandler} className="drum-pad">
+            <audio className="clip" id={props.drumKey} src={props.url}></audio>
             {props.drumKey}
-        </button>
+        </div>
         )
     };
 

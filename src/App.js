@@ -13,15 +13,15 @@ class App extends React.Component {
       keyList: "QWEASDZXC",
       currentDrum: "the drum",
       banks: [[
-          {name: 'clap', url: 'public/samples/Clap03 Drums1DOTcom.wav'},
-          {name: 'snap', url: 'public/samples/Snap02 Drums1DOTcom.wav'},
-          {name: 'hihat', url: 'public/samples/CHH07 Drums1DOTcom.wav'},
-          {name: 'crash', url: 'public/samples/Crash10 Drums1DOTcom.wav'},
-          {name: 'ride', url: 'public/samples/Ride02 Drums1DOTcom.wav'},
-          {name: 'ridecup', url: 'public/samples/Ride03 Drums1DOTcom.wav'},
-          {name: 'snare', url: 'public/samples/Snare22 Drums1DOTcom.wav'},
-          {name: 'tom', url: 'public/samples/Tom28 Drums1DOTcom.wav'},
-          {name: 'kick', url: 'public/samples/Kick01 Drums1DOTcom.wav'},
+          {name: 'clap', url: './samples/Clap03 Drums1DOTcom.wav'},
+          {name: 'snap', url: './samples/Snap02 Drums1DOTcom.wav'},
+          {name: 'hihat', url: './samples/CHH07 Drums1DOTcom.wav'},
+          {name: 'crash', url: './samples/Crash10 Drums1DOTcom.wav'},
+          {name: 'ride', url: './samples/Ride02 Drums1DOTcom.wav'},
+          {name: 'ridecup', url: './samples/Ride03 Drums1DOTcom.wav'},
+          {name: 'snare', url: './samples/Snare22 Drums1DOTcom.wav'},
+          {name: 'tom', url: './samples/Tom28 Drums1DOTcom.wav'},
+          {name: 'kick', url: './samples/Kick01 Drums1DOTcom.wav'},
         ],[
           {name: 'plop', url: ''},
           {name: 'whoosh', url: ''},
@@ -41,7 +41,19 @@ class App extends React.Component {
   }
   
   handleClick(e) {
-    console.log(e.target.innerText);
+    const drumLetter = e.target.innerText;
+    const drumIndex = this.state.keyList.indexOf(drumLetter);
+    const drumName = this.state.banks[this.state.bank][drumIndex].name;
+    const sound = document.getElementById(drumLetter);
+
+    console.log(sound);
+
+    sound.currentTime = 0;
+    sound.play();
+    this.setState({
+      currentDrum: drumName
+    })
+
   }
 
 	render() {
