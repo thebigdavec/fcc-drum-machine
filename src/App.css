@@ -38,20 +38,23 @@
     background: rgb(23, 23, 23);
     padding: 1em;
     border-radius: 1em;
-    transition: background 150ms ease-out;
+    transition: 1s ease-out;
 }
 
 .drum-pad:hover {
     background: rgb(23, 60, 23);
+    transition: 50ms ease-out;
 }
 
+.drum-pad-active {
+    color: white;
+    background: rgb(37, 107, 37);
+    transition: 50ms ease-out;
+}
+
+
+/* 
 .drum-pad:active {
     background: rgb(37, 107, 37);
-}
-
-.control-name {
-    font-size: small;
-    color: rgb(178, 178, 178);
-    text-transform: uppercase;
-    letter-spacing: .1em;
-}
+    transition: background 150s ease-out;
+} */

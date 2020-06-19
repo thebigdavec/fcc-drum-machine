@@ -70,13 +70,23 @@ class App extends React.Component {
 		const drumIndex = this.state.keyList.indexOf(drumLetter);
 		const drumName = this.state.banks[this.state.bank][drumIndex].name;
 		const sound = document.getElementById(drumLetter);
+    const pad = document.getElementById(drumName);
 
 		sound.currentTime = 0;
 		sound.play();
 		this.setState({
 			currentDrum: drumName
-		});
+    });
+    // document.getElementById(drumName).classList.toggle('drum-pad-active');
+    this.activatePad(pad);
+    setTimeout(() => this.activatePad(pad), 100);
+    // document.getElementById(drumName).classList.toggle('drum-pad-active');
 	}
+
+  activatePad(pad) {
+    console.log(pad);
+    pad.classList.toggle('drum-pad-active');
+  }
 
 	render() {
 		return (
